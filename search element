@@ -1,0 +1,130 @@
+#include<iostream>
+using namespace std;
+typedef struct student
+{
+    int data;
+    struct student* next;
+} node;
+node* head;
+void print()
+{
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+void mid(int valu,int pos)
+{
+    node* temp=(node*)malloc(sizeof(node));
+    temp->data=valu;
+    temp->next=NULL;
+    if(pos==1)
+    {
+        temp->next=head;
+        head=temp;
+        return;
+    }
+  else
+  {
+        node* temp2;
+    temp2=head;
+        for(int i=0; i<pos-2; i++)
+        {
+            temp2=temp2->next;
+        }
+        temp->next=temp2->next;
+        temp2->next=temp;
+  }
+
+
+}
+void ins(int value)
+{
+    node* temp=(node*)malloc(sizeof(node));
+    temp->data=value;
+    temp->next=NULL;
+    if(head==NULL)
+    {
+        head=temp;
+    }
+    else
+    {
+        node* temp1;
+        temp1=head;
+        while(temp1->next!=NULL)
+        {
+            temp1=temp1->next;
+        }
+        temp1->next=temp;
+    }
+}
+void fas(int valu)
+{
+    node* temp=(node*)malloc(sizeof(node));
+    temp->data=valu;
+    temp->next=head;
+    head=temp;
+}
+void del(int pos)
+{
+    if(pos==1)
+    {
+       node* temp=head;
+    head=head->next;
+       free(temp);
+    }
+    else
+    {
+        node* temp=head;
+         for(int i=0;i<pos-2;i++)
+         {
+             temp=temp->next;
+         }
+         node* temp1;
+         temp1=temp->next;
+         temp->next=temp1->next;
+         free(temp1);
+    }
+}
+void sear(node *head, int key)//cearch element
+{
+    while (head != NULL)
+    {
+        if (head->data == key)
+        {
+            printf("key found\n");
+            return;
+        }
+        head = head->next;
+    }
+    printf("Key not found\n");
+}
+int main()
+{
+    head=NULL;
+    ins(4);
+    ins(5);
+    ins(6);
+    ins(7);
+    ins(11);
+    ins(2);
+    print();
+    mid(8,1);
+    mid(78,2);
+    mid(9,4);
+    print();
+    fas(23);
+    fas(21);
+    fas(32);
+    print();
+    del(1);
+     del(5);
+    print();
+    sear(head,11);
+    print();
+
+    return 0;
+}
