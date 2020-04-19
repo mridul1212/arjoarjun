@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define pi  3.14159265358979323846
+#include<cmath>
+int main()
+{
+	double a,r1,r2,r3,p,h,ans;
+	cin>>a;
+	for(int i=1;i<=a;i++)
+	{
+		cin>>r1>>r2>>h>>p;
+		r3=r2+(((r1-r2)*p)/h);
+
+		ans=(pi*p*(r2*r2+r3*r3+r2*r3))/3.0;
+		printf("Case %d: %.9lf\n",i,ans);
+	}
+	return 0;
+}
