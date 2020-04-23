@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define cc cin
+#define co cout
+int main()
+{
+	int n;
+	cc>>n;
+	float a,b,c,s;
+	while(n--)
+	{
+		cc>>a>>b>>c;
+		s=((a*2.0)+(b*3.0)+(c*5.0))/10.0;
+		printf("%.1f\n",s);
+	}
+	return 0;
+}
